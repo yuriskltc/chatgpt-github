@@ -27,34 +27,42 @@ public class Main {
 
     public static void main(String[] args) throws Exception {
         // Set up the OpenAI API client
-        com.theokanning.openai.api.DefaultApi openaiApi = new com.theokanning.openai.api.DefaultApi();
-        openaiApi.getApiClient().setApiKey(OPENAI_API_KEY);
+        //com.theokanning.openai.api.DefaultApi openaiApi = new com.theokanning.openai.api.DefaultApi();
+        //openaiApi.getApiClient().setApiKey(OPENAI_API_KEY);
 
         // Set up the GitHub API client
         RepositoryService repositoryService = new RepositoryService();
         repositoryService.getClient().setOAuth2Token(GITHUB_ACCESS_TOKEN);
-
+        
+        // test client
+        OpenAiService service = new OpenAiService("your_token");
+        CompletionRequest completionRequest = CompletionRequest.builder()
+            .prompt("Somebody once told me the world is gonna roll me")
+            .model("ada")
+            .echo(true)
+            .build();
+        service.createCompletion(completionRequest).getChoices().forEach(System.out::println);
         // Ask the user three questions
-        Scanner scanner = new Scanner(System.in);
-        for (int i = 1; i <= 3; i++) {
-            System.out.println("Question " + i + ": ");
-            String question = scanner.nextLine();
+        //Scanner scanner = new Scanner(System.in);
+        //for (int i = 1; i <= 3; i++) {
+          //  System.out.println("Question " + i + ": ");
+            //String question = scanner.nextLine();
 
             // Generate a response using the OpenAI API
-            CompletionRequest completionRequest = new CompletionRequest();
-            completionRequest.setPrompt(question);
-            completionRequest.setMaxTokens(100);
-            completionRequest.setTemperature(0.5);
-            completionRequest.setEngine(EngineName.DA_VINCI);
-            OpenAIRequest openaiRequest = new OpenAIRequest().addExamplesItem(completionRequest);
-            OpenAIResponse openaiResponse = openaiApi.completions(openaiRequest);
+            //CompletionRequest completionRequest = new CompletionRequest();
+            //completionRequest.setPrompt(question);
+            //completionRequest.setMaxTokens(100);
+            //completionRequest.setTemperature(0.5);
+            //ompletionRequest.setEngine(EngineName.DA_VINCI);
+            //OpenAIRequest openaiRequest = new OpenAIRequest().addExamplesItem(completionRequest);
+            //OpenAIResponse openaiResponse = openaiApi.completions(openaiRequest);
 
             // Save the response to a file
-            String fileName = FILENAME_PREFIX + i + ".txt";
-            String responseText = openaiResponse.getChoices().get(0).getText();
-            saveToFile(fileName, responseText);
+            //String fileName = FILENAME_PREFIX + i + ".txt";
+            //String responseText = openaiResponse.getChoices().get(0).getText();
+            //saveToFile(fileName, responseText);
 
-            System.out.println("Saved response to " + fileName);
+            //System.out.println("Saved response to " + fileName);
         }
 
         // Create a new GitHub repository
