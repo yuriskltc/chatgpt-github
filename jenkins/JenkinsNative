@@ -22,17 +22,17 @@ pipeline  {
         }
         stage('Compile') {        
             steps{          
-                    sh 'mvn -Dproject-version=1.0.${BUILD_NUMBER}-SNAPSHOT compile'        
+                    sh 'mvn -Dversion=1.0.${BUILD_NUMBER}-SNAPSHOT compile'        
                 }
         }
         stage('Test') {        
             steps{          
-                    sh 'mvn -Dproject-version=1.0.${BUILD_NUMBER}-SNAPSHOT test'        
+                    sh 'mvn -Dversion=1.0.${BUILD_NUMBER}-SNAPSHOT test'        
                 }
         }
         stage('Build') {
             steps{
-                 sh 'mvn -B -DskipTests -Dproject-version=1.0.${BUILD_NUMBER}-SNAPSHOT clean package -U'
+                 sh 'mvn -B -DskipTests -Dversion=1.0.${BUILD_NUMBER}-SNAPSHOT clean package -U'
             }
         }
         stage ('Deploy') {   
