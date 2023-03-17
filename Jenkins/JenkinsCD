@@ -1,0 +1,24 @@
+node {
+    def server
+       stage ('Artifactory configuration') {
+            server = Artifactory.server 'JFROGTST'
+       }       
+       stage ('folder cleanup'){
+            sh 'rm /opt/gpt-github/*.jar || echo "no jar files in directory" '
+       }
+       stage ('Download') {
+           def downloadSpec =
+            '''{
+                "files": [
+                    {
+                        "pattern": "my-libs-release-local/gpt-github-1.0.${BUILDNUM}*.jar",
+                        "target": "/opt/gpt-github/"                    
+                    }
+                ]
+            }'''
+            server.download spec: downloadSpec           
+        }
+        stage('App start'){
+            sh 'java -jar /opt/gpt-github/gpt-github-1.0.${BUILDNUM}-SNAPSHOT.jar Base || echo "application run was stopped (new CD started ?)"'
+        }        
+}
