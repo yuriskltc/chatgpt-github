@@ -66,7 +66,7 @@ public class Main {
         }
 
         // Create a new GitHub repository
-        Repository repository = new Repository();
+        /*pository repository = new Repository();
         repository.setName(REPOSITORY_NAME);
         repositoryService.createRepository(repository);
 
@@ -81,7 +81,7 @@ public class Main {
             content.setContent(fileContent);
             contentsService.createFile(repository, content, "Initial commit");
             System.out.println("Uploaded " + fileName + " to repository.");
-        }
+        }*/
     }
 
     private static void saveToFile(String fileName, String content) throws IOException {
