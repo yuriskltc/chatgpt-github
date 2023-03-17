@@ -6,7 +6,7 @@
     <packaging>jar</packaging>
     <groupId>com.example.app</groupId>
     <artifactId>chatgpt-github</artifactId>
-    
+    <name>app</name>
     <version>${version}</version>
 
     <dependencies>
