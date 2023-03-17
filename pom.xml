@@ -5,11 +5,11 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.example</groupId>
-    <artifactId>chatgpt-github-uploader</artifactId>
+    <artifactId>chatgpt-github</artifactId>
     <version>${project.version}</version>
 
     <properties>
-        <project.version>1.0-SNAPSHOT</project.version>
+        <project.version>${project.version}</project.version>
     </properties>
 
     <dependencies>
