@@ -6,7 +6,7 @@
 
     <groupId>com.example</groupId>
     <artifactId>chatgpt-github</artifactId>
-    <version>${project.version}</version>
+    <version>${version}</version>
 
     <dependencies>
         <dependency>
