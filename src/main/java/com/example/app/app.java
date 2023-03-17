@@ -5,12 +5,12 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Scanner;
 
-import com.openai.api.ApiException;
-import com.openai.api.models.CompletionRequest;
-import com.openai.api.models.CompletionResponse;
-import com.openai.api.models.EngineName;
-import com.openai.api.models.OpenAIRequest;
-import com.openai.api.models.OpenAIResponse;
+import com.theokanning.openai-gpt3-java.ApiException;
+import com.theokanning.openai-gpt3-java.models.CompletionRequest;
+import com.theokanning.openai-gpt3-java.api.models.CompletionResponse;
+import com.theokanning.openai-gpt3-java.api.models.EngineName;
+import com.theokanning.openai-gpt3-java.api.models.OpenAIRequest;
+import com.theokanning.openai-gpt3-java.api.models.OpenAIResponse;
 
 import org.apache.commons.codec.binary.Base64;
 import org.eclipse.egit.github.core.Repository;
