@@ -5,12 +5,12 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Scanner;
 
-import com.theokanning.openai-gpt3-java.ApiException;
-import com.theokanning.openai-gpt3-java.models.CompletionRequest;
-import com.theokanning.openai-gpt3-java.api.models.CompletionResponse;
-import com.theokanning.openai-gpt3-java.api.models.EngineName;
-import com.theokanning.openai-gpt3-java.api.models.OpenAIRequest;
-import com.theokanning.openai-gpt3-java.api.models.OpenAIResponse;
+import com.theokanning.openai.ApiException;
+import com.theokanning.openai.models.CompletionRequest;
+import com.theokanning.openai.api.models.CompletionResponse;
+import com.theokanning.openai.api.models.EngineName;
+import com.theokanning.openai.api.models.OpenAIRequest;
+import com.theokanning.openai.api.models.OpenAIResponse;
 
 import org.apache.commons.codec.binary.Base64;
 import org.eclipse.egit.github.core.Repository;
@@ -27,7 +27,7 @@ public class Main {
 
     public static void main(String[] args) throws Exception {
         // Set up the OpenAI API client
-        com.theokanning.openai-gpt3-java.api.DefaultApi openaiApi = new com.theokanning.openai-gpt3-java.api.DefaultApi();
+        com.theokanning.openai.api.DefaultApi openaiApi = new com.theokanning.openai.api.DefaultApi();
         openaiApi.getApiClient().setApiKey(OPENAI_API_KEY);
 
         // Set up the GitHub API client
