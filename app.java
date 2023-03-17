@@ -18,7 +18,7 @@ import org.eclipse.egit.github.core.service.RepositoryService;
 import org.eclipse.egit.github.core.util.EncodingUtils;
 
 public class Main {
-    private static final String OPENAI_API_KEY = "YOUR_OPENAI_API_KEY";
+    private static final String OPENAI_API_KEY = "123";
     private static final String GITHUB_ACCESS_TOKEN = "YOUR_GITHUB_ACCESS_TOKEN";
     private static final String REPOSITORY_NAME = "YOUR_REPOSITORY_NAME";
     private static final String FILENAME_PREFIX = "answer_";
