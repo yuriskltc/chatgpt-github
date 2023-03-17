@@ -9,7 +9,7 @@
     <version>${project.version}</version>
 
     <properties>
-        <project.version>${project.version}</project.version>
+        <project.version>1.0-NORELEASE</project.version>
     </properties>
 
     <dependencies>
