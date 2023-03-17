@@ -4,7 +4,7 @@ node {
             server = Artifactory.server 'JFROGTST'
        }       
        stage ('folder cleanup'){
-            sh 'rm /opt/gpt-github/*.jar || echo "no jar files in directory" '
+            sh 'rm /opt/gpt-github/*.jar || echo "no jar files in directory"  '
        }
        stage ('Download') {
            def downloadSpec =
