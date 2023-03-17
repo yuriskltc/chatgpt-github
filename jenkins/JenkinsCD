@@ -11,7 +11,7 @@ node {
             '''{
                 "files": [
                     {
-                        "pattern": "my-libs-release-local/gpt-github-1.0.${BUILDNUM}*.jar",
+                        "pattern": "my-libs-release-local/chatgpt-github-1.0.${BUILDNUM}*.jar",
                         "target": "/opt/gpt-github/"                    
                     }
                 ]
@@ -19,6 +19,6 @@ node {
             server.download spec: downloadSpec           
         }
         stage('App start'){
-            sh 'java -jar /opt/gpt-github/gpt-github-1.0.${BUILDNUM}-SNAPSHOT.jar Base || echo "application run was stopped (new CD started ?)"'
+            sh 'java -jar /opt/gpt-github/chatgpt-github-1.0.${BUILDNUM}-SNAPSHOT.jar Base || echo "application run was stopped (new CD started ?)"'
         }        
 }
