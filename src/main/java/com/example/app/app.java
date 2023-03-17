@@ -4,7 +4,7 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Scanner;
-
+import com.theokanning.openai.service;
 import com.theokanning.openai.ApiException;
 import com.theokanning.openai.models.CompletionRequest;
 import com.theokanning.openai.api.models.CompletionResponse;
