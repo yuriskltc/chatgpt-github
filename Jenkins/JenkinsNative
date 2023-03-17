@@ -1,0 +1,67 @@
+pipeline  {
+    agent any
+    environment {
+        uploadSpec = ''
+        server = ''
+    }
+    tools {
+        maven "Maven"
+    }
+    stages{
+        stage ('Artifactory configuration') {         
+            steps{
+                script{
+                    server = Artifactory.server 'JFROGTST' 
+                }
+            }
+        }
+        stage('Fetch') {
+            steps {
+                git credentialsId: 'GITHUB', url: 'https://github.com/yuriskltc/chatgpt-github.git'
+            }
+        }
+        stage('Compile') {        
+            steps{          
+                    sh 'mvn -Dv=${BUILD_NUMBER} compile'        
+                }
+        }
+        stage('Test') {        
+            steps{          
+                    sh 'mvn -Dv=${BUILD_NUMBER} test'        
+                }
+        }
+        stage('Build') {
+            steps{
+                 sh 'mvn -B -DskipTests -Dv=project-version=1.0.${v}-SNAPSHOT clean package -U'
+            }
+        }
+        stage ('Deploy') {   
+            environment{
+                uploadSpec = '''{
+                    "files": [
+                        {
+                            "pattern": "target/*.jar",
+                            "target": "my-libs-release-local"                  
+                        }, {
+                            "pattern": "target/*.pom",
+                            "target": "my-libs-release-local"
+                        }]
+                }'''    
+            }         
+            steps{                               
+                script{
+                    sh 'cp pom.xml target/chatgpt-github-1.0.${BUILD_NUMBER}-SNAPSHOT.pom'
+                    def buildInfo = Artifactory.newBuildInfo()
+                    buildInfo.env.collect()
+                    server.upload spec: uploadSpec, buildInfo: buildInfo
+                    server.publishBuildInfo buildInfo
+                }
+            }
+        }
+        stage ('PostBuild - Simple deploy with long run') {
+            steps{
+                build job: 'GPT-Github CD', parameters: [string(name: 'BUILDNUM', value: "${BUILD_NUMBER}" )],wait:false
+            }
+        }        
+    }
+}
