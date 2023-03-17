@@ -31,7 +31,7 @@
             <version>4.5.13</version>
         </dependency>
     </dependencies>
-      <build>    
+  <build>    
     <pluginManagement>
       <plugins>
         <plugin>
@@ -81,4 +81,5 @@
         </executions>
       </plugin>
     </plugins>
+  </build>
 </project>
